@@ -123,15 +123,15 @@ export const columns: ColumnDef<Product>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={() => handleStock(params.row.original.id, params.row.original.inStock)}>
+            <DropdownMenuItem onClick={() => handleStock(params.row.original.id, params.row.original.inStock)} className="cursor-pointer">
               <RefreshCw size={15} />
               <p className="ml-2">Restock</p>
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => router.push(`product/${params.row.original.id}`)}>
+            <DropdownMenuItem onClick={() => router.push(`product/${params.row.original.id}`)} className="cursor-pointer">
               <Eye size={15} />
               <p className="ml-2">View Detail</p>
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => handleDelete(params.row.original.id, params.row.original.image)}>
+            <DropdownMenuItem onClick={() => handleDelete(params.row.original.id, params.row.original.image)} className="cursor-pointer">
               <Trash2 size={15} />
               <p className="ml-2">Delete</p>
             </DropdownMenuItem>

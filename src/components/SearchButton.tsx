@@ -61,12 +61,12 @@ const SearchButton = () => {
       <Button
         onClick={() => setOpen((open) => !open)}
         variant='outline'
-        className='relative h-9 w-9 p-0 xl:h-10 xl:w-80 xl:justify-start xl:px-3 xl:py-2'
+        className='relative p-0 h-10 w-80 md:justify-start md:px-3 md:py-2'
       >
-        <Search className='h-4 w-4 xl:mr-2' aria-hidden='true' />
-        <span className='hidden xl:inline-flex'>Search products...</span>
+        <Search className='h-4 w-4 mr-2' aria-hidden='true' />
+        <span className='inline-flex'>Search products...</span>
         <span className='sr-only'>Search products</span>
-        <kbd className='pointer-events-none absolute right-2 top-2 hidden h-6 select-none items-center gap-1 rounded-full border bg-muted px-1.5 font-mono text-xs font-medium opacity-100 xl:flex'>
+        <kbd className='pointer-events-none absolute right-2 top-2 hidden h-6 select-none items-center gap-1 rounded-full border bg-muted px-1.5 font-mono text-xs font-medium opacity-100 md:flex'>
           <abbr title='Control' className='no-underline'>
             Ctrl
           </abbr>

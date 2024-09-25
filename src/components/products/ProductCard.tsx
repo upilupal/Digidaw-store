@@ -1,10 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { formatPrice } from "../../../utils/formatPrice";
 import { truncateText } from "../../../utils/truncateText";
+import { AspectRatio } from "../ui/aspect-ratio";
+import { Button } from "../ui/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card";
 
 interface ProductCardProps {
   data: any;
@@ -12,21 +16,29 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
   const router = useRouter();
-
-   
-
   return (
-    <div onClick={() => router.push(`/product/${data.id}`)} className="col-span-1 cursor-pointer border-[1.2px] border-slate-200 bg-slate-50 rounded-sm p-2 transition hover:scale-105 text-center text-sm">
-      <div className="flex flex-col items-center w-full gap-1">
-        <div className="aspect-square overflow-hidden relative w-full">
-          <Image fill className="w-full h-full object-contain" src={data.image[0].image} alt={data.name} />
-        </div>
-        <div className="mt-4">
-            {truncateText(data.name)}
-        </div>
-        <div className="font-semibold">{formatPrice(data.price)}</div>
+    <Card className="size-full overflow-hidden rounded-lg">
+      <div className="flex flex-col w-full gap-1">
+        <CardHeader className="w-full p-0 border-b">
+          <Link aria-label={data.name} href={`/product/${data.id}`}>
+            <AspectRatio ratio={4 / 3}>
+              <Image fill className="w-full h-full object-contain" src={data.image[0].image} alt={data.name} />
+            </AspectRatio>
+          </Link>
+        </CardHeader>
+        <CardContent className="space-y-1.5">
+          <CardTitle className="mt-4 text-lg">{truncateText(data.name)}</CardTitle>
+          <CardDescription className="">{formatPrice(data.price)}</CardDescription>
+        </CardContent>
+        <CardFooter className="p-4 pt-1 w-full">
+          <Button aria-label="Add to cart" size="sm" className="h-8 w-full rounded-sm">
+            <Link aria-label={data.name} href={`/product/${data.id}`}>
+              View detail
+            </Link>
+          </Button>
+        </CardFooter>
       </div>
-    </div>
+    </Card>
   );
 };
 
